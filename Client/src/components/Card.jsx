@@ -25,7 +25,6 @@ export function Card( {name, id, onClose, image, species, myFavorites, addFav, r
       myFavorites?.forEach((fav) => {
          if (fav.id === id) {
             setIsFav(true);
-            console.log("xd", isFav, fav);
          }
       });
    }, [id, isFav, myFavorites]);

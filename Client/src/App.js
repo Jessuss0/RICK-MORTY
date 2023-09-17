@@ -37,11 +37,7 @@ function App() {
 
    const addRandom = ()=>{
       let idRandom = generarRandomId();
-      axios(`https://rickandmortyapi.com/api/character/${idRandom}`).then(({ data }) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-         }
-      }).catch((err)=> console.log(err))
+      onSearch(idRandom);
    }
 
    const login = (userData)=>{
