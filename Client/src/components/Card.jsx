@@ -27,7 +27,7 @@ export function Card( {name, id, onClose, image, species, myFavorites, addFav, r
             setIsFav(true);
          }
       });
-   }, [id, isFav, myFavorites]);
+   }, [id, myFavorites]);
 
    return (
       <div>

@@ -15,9 +15,6 @@ function App() {
    const [characters, setCharacters] = useState([])
    const [access, setAccess] = useState(false);
 
-   const EMAIL = "jesus@gmail.com";
-   const PASSWORD = "123456"
-
    const generarRandomId = ()=>{
       return Math.floor(Math.random()* 826) + 1;
    }
@@ -40,12 +37,15 @@ function App() {
       onSearch(idRandom);
    }
 
-   const login = (userData)=>{
-      if(userData.password === PASSWORD && userData.email === EMAIL){
-         setAccess(true);
-         navigate("/home");
-      }
-   };
+   function login(userData) {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      });
+   }
 
    const logOut = ()=>{
       navigate("/")
