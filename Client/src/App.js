@@ -19,12 +19,20 @@ function App() {
       return Math.floor(Math.random()* 826) + 1;
    }
 
-   function onSearch(id) {
-      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
+   async function onSearch(id) {
+      // axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
+      //    if (data.name) {
+      //       setCharacters((oldChars) => [...oldChars, data]);
+      //    }
+      // }).catch((err)=> console.log(err))
+      try {
+         const {data} = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+         if(data.name){
+            setCharacters((oldchars) => [...oldchars, data]);
          }
-      }).catch((err)=> console.log(err))
+      } catch (error) {
+         console.log(error);
+      }
    }
 
    const onClose = (id)=>{
