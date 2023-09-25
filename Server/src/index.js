@@ -2,6 +2,7 @@ const express = require("express")
 const server = express();
 const PORT = 3001;
 const router = require("./routes/index");
+const {conn} = require("./DB_connection");
 
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -22,7 +23,9 @@ server.use(express.json());
 server.use('/rickandmorty', router);
 
 
-server.listen(PORT, ()=>{console.log("Esto no es coca papi " + PORT)});
+server.listen(PORT, ()=>{
+   conn.sync({ force: true })
+   console.log("Esto no es coca papi " + PORT)});
 
 module.exports =
   server;
