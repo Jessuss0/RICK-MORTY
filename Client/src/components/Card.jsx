@@ -31,7 +31,7 @@ export function Card( {name, id, onClose, image, species, myFavorites, addFav, r
 
    return (
       <div>
-               <button onClick={handleFavorite}>{isFav ? "❤️" : "🤍"}</button>
+         <button onClick={handleFavorite}>{isFav ? "❤️" : "🤍"}</button>
          <button onClick={()=>onClose(id)}>X</button>
          <Link to={`/detail/${id}`}>
          <h2>{name}</h2>

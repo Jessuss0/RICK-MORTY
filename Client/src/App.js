@@ -20,11 +20,6 @@ function App() {
    }
 
    async function onSearch(id) {
-      // axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-      //    if (data.name) {
-      //       setCharacters((oldChars) => [...oldChars, data]);
-      //    }
-      // }).catch((err)=> console.log(err))
       try {
          const {data} = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
          if(data.name){
@@ -36,7 +31,7 @@ function App() {
    }
 
    const onClose = (id)=>{
-      let resultado = characters.filter((pj)=> pj.id !== Number(id))
+      let resultado = characters.filter((pj)=> pj.id != id)
       setCharacters(resultado)
    }
 

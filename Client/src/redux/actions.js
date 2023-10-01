@@ -1,6 +1,9 @@
 import axios from 'axios';
 export const ADD_FAV = "ADD_FAV";
 export const REMOVE_FAV = "REMOVE_FAV";
+export const FILTER = "FILTER";
+export const ORDER = "ORDER";
+export const RESET = "RESET";
 
 export const addFav = (character) => {
     const endpoint = 'http://localhost:3001/rickandmorty/fav';
@@ -33,3 +36,42 @@ export const addFav = (character) => {
       }
     };
  };
+
+ export const filterCards = (gender)=>{
+   return async(dispatch)=>{
+      try {
+         return dispatch({
+            type:FILTER,
+            payload: gender
+         })
+      } catch (error) {
+         console.log(error);
+      }
+   }
+ };
+
+export const orderCards = (order)=>{
+   return async(dispatch)=>{
+      try {
+         return dispatch({
+            type:ORDER,
+            payload:order
+         })
+      } catch (error) {
+         console.log(error);
+      }
+   }
+}
+
+export const resetFilt = ()=>{
+   return async(dispatch)=>{
+      try {
+         return dispatch({
+            type:RESET,
+            payload: "xd"
+         })
+      } catch (error) {
+         console.log(error);
+      }
+   }
+}

@@ -1,20 +1,15 @@
-const {Favorite, User} = require("../DB_connection");
+const {Favorite} = require("../DB_connection");
 
 const deleteFav = async (req, res)=>{
     const {id} = req.params;
     const {idUser} = req.query;
 
     try {
-        const fav = await Favorite.findByPk(id);
+        await Favorite.destroy({where: {id}});
 
-        fav.removeUser(idUser);
+        const allFavorites = await Favorite.findAll();
 
-        const allFavorites = await Favorite.findAll({
-            include: [{model: User, where: {id: idUser}}]
-        });
-
-        return res.json(allFavorites);
-
+        res.json(allFavorites);
 
     } catch (error) {
         res.status(500).json({error: error.message})

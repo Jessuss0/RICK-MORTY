@@ -24,7 +24,7 @@ server.use('/rickandmorty', router);
 
 
 server.listen(PORT, ()=>{
-   conn.sync({ force: true })
+   conn.sync({ force: false })
    console.log("Esto no es coca papi " + PORT)});
 
 module.exports =
